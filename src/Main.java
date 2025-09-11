@@ -2,6 +2,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static utils.IOUtils.println;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -13,7 +15,7 @@ public class Main {
         var jogoService = new JogoService();
 
         while (true) {
-            System.out.println("""
+            println("""
                         Bem vindo ao sistema de gerenciamento de mídias!
                         Digite o conteúdo que deseja gerenciar:
                         1 - Jogos
@@ -23,8 +25,8 @@ public class Main {
             var conteudoOpcao = scan.nextInt();
             scan.nextLine();
             if (conteudoOpcao == 1) {
-                System.out.println("-----------------------------------");
-                System.out.println("""
+                println("-----------------------------------");
+                println("""
                         Digite a opção desejada:
                         1 - Cadastrar novo jogo
                         2 - Listar jogos cadastrados
@@ -40,7 +42,7 @@ public class Main {
                     case 2 -> jogoService.ListarJogos(catalogo);
                     case 3 -> jogoService.RemoverJogo(scan, catalogo);
                     case 4 -> System.exit(0);
-                    default -> System.out.println("Opção inválida!");
+                    default -> println("Opção inválida!");
                 }
             }
         }
