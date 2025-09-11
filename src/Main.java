@@ -1,12 +1,13 @@
 import entities.Conteudo;
+import entities.Jogo;
 import services.FilmeService;
 import services.JogoService;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static utils.IOutils.println;
-import static utils.IOutils.scanInt;
-
+import static utils.IOUtils.println;
+import static utils.IOUtils.scanInt;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -20,9 +21,8 @@ public class Main {
         var filmeService = new FilmeService();
 
         while (true) {
-            println(MENU_PRINCIPAL);
+           println(MENU_PRINCIPAL);
             var conteudoOpcao = scanInt(scan);
-            scan.nextLine();
             switch (conteudoOpcao) {
                 case 0 -> System.exit(0);
                 case 1 -> {
@@ -32,7 +32,6 @@ public class Main {
                         println(jogoService.MENU_JOGOS);
 
                         var opcao = scanInt(scan);
-                        scan.nextLine();
 
                         switch (opcao) {
                             case 1 -> jogoService.AdicionarJogo(scan, catalogo);
@@ -45,8 +44,7 @@ public class Main {
                 }
                 case 2 -> {
                     var voltar = false;
-
-                    while(!voltar) {
+                    while (!voltar) {
                         println("-----------------------------------");
                         println(filmeService.MENU_FILME);
 
@@ -54,9 +52,10 @@ public class Main {
 
                         switch (opcao) {
                             case 4 -> voltar = true;
-                            case 1 -> println("Cadastre um novo filme - Em construção");
-                            default -> println("Opção inválida");
+                            case 1 -> println("Cadastre novo filme - Em construção");
+                            default -> println("Opção inválida!");
                         }
+
                     }
                 }
             }

@@ -1,4 +1,5 @@
 package services;
+
 import entities.*;
 
 import java.time.LocalDate;
@@ -7,13 +8,13 @@ import java.util.Scanner;
 
 public class JogoService {
 
-        public final String MENU_JOGOS = """
-                                        Digite a opção desejada:
-                                        1 - Cadastrar novo jogo
-                                        2 - Listar jogos cadastrados
-                                        3 - Remover jogo
-                                        4 - Voltar
-                                        """;
+    public final String MENU_JOGOS = """
+                        Digite a opção desejada:
+                        1 - Cadastrar novo jogo
+                        2 - Listar jogos cadastrados
+                        3 - Remover jogo
+                        4 - Voltar
+                        """;
 
     public void AdicionarJogo(Scanner scan, ArrayList<Conteudo> catalogo){
         System.out.println("Digite o nome do jogo que deseja cadastrar:");
@@ -48,7 +49,4 @@ public class JogoService {
         scan.nextLine();
         catalogo.remove(numJogo - 1);
     }
-
-
-
 }
