@@ -44,8 +44,22 @@ public class Main {
                     }
                 }
                 case 2 -> {
-                    println("-----------------------------------");
-                    println(filmeService.MENU_FILME);
+                    var voltar = false;
+
+                    while(!voltar) {
+                        println("-----------------------------------");
+                        println(filmeService.MENU_FILME);
+
+                        var opcao = scanInt(scan);
+
+                        if(opcao == 4) {
+                            voltar = true;
+                        }
+                        else if(opcao == 1)
+                            println("Cadastre um novo filme - Em construção");
+                        else
+                            println("Opção inválida");
+                    }
                 }
             }
         }
