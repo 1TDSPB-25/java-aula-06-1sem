@@ -1,8 +1,11 @@
-import java.time.LocalDate;
+import entities.Conteudo;
+import services.FilmeService;
+import services.JogoService;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static utils.IOUtils.println;
+import static utils.IOutils.println;
+
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -13,38 +16,47 @@ public class Main {
         var catalogo = new ArrayList<Conteudo>();
         var scan = new Scanner(System.in);
         var jogoService = new JogoService();
+        var filmeService = new FilmeService();
 
         while (true) {
-            println("""
-                        Bem vindo ao sistema de gerenciamento de mídias!
-                        Digite o conteúdo que deseja gerenciar:
-                        1 - Jogos
-                        2 - Filmes
-                        3 - Series
-                    """);
+            println(MENU_PRINCIPAL);
             var conteudoOpcao = scan.nextInt();
             scan.nextLine();
+            if(conteudoOpcao == 0)
+                System.exit(0);
             if (conteudoOpcao == 1) {
-                println("-----------------------------------");
-                println("""
-                        Digite a opção desejada:
-                        1 - Cadastrar novo jogo
-                        2 - Listar jogos cadastrados
-                        3 - Remover jogo
-                        4 - Sair
-                        """);
+                var voltar = false;
+                while (!voltar) {
+                    println("-----------------------------------");
+                    println(jogoService.MENU_JOGOS);
 
-                var opcao = scan.nextInt();
-                scan.nextLine();
+                    var opcao = scan.nextInt();
+                    scan.nextLine();
 
-                switch (opcao) {
-                    case 1 -> jogoService.AdicionarJogo(scan, catalogo);
-                    case 2 -> jogoService.ListarJogos(catalogo);
-                    case 3 -> jogoService.RemoverJogo(scan, catalogo);
-                    case 4 -> System.exit(0);
-                    default -> println("Opção inválida!");
+                    switch (opcao) {
+                        case 1 -> jogoService.AdicionarJogo(scan, catalogo);
+                        case 2 -> jogoService.ListarJogos(catalogo);
+                        case 3 -> jogoService.RemoverJogo(scan, catalogo);
+                        case 4 -> voltar = true;
+                        default -> System.out.println("Opção inválida!");
+                    }
                 }
+            }
+            if(conteudoOpcao == 2) {
+                println("-----------------------------------");
+                println(filmeService.MENU_FILME);
+
+
             }
         }
     }
+
+    public static final String MENU_PRINCIPAL = """
+                        Bem vindo ao sistema de gerenciamento de mídias!
+                        Digite o conteúdo que deseja gerenciar:
+                        0 - Sair
+                        1 - Jogos
+                        2 - Filmes
+                        3 - Series
+                    """;
 }
