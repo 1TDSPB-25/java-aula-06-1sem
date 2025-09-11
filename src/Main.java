@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static utils.IOutils.println;
+import static utils.IOutils.scanInt;
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -20,7 +21,7 @@ public class Main {
 
         while (true) {
             println(MENU_PRINCIPAL);
-            var conteudoOpcao = scan.nextInt();
+            var conteudoOpcao = scanInt(scan);
             scan.nextLine();
             switch (conteudoOpcao) {
                 case 0 -> System.exit(0);
@@ -30,7 +31,7 @@ public class Main {
                         println("-----------------------------------");
                         println(jogoService.MENU_JOGOS);
 
-                        var opcao = scan.nextInt();
+                        var opcao = scanInt(scan);
                         scan.nextLine();
 
                         switch (opcao) {
@@ -42,12 +43,10 @@ public class Main {
                         }
                     }
                 }
-            }
-            if(conteudoOpcao == 2) {
-                println("-----------------------------------");
-                println(filmeService.MENU_FILME);
-
-
+                case 2 -> {
+                    println("-----------------------------------");
+                    println(filmeService.MENU_FILME);
+                }
             }
         }
     }
