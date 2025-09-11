@@ -52,13 +52,11 @@ public class Main {
 
                         var opcao = scanInt(scan);
 
-                        if(opcao == 4) {
-                            voltar = true;
+                        switch (opcao) {
+                            case 4 -> voltar = true;
+                            case 1 -> println("Cadastre um novo filme - Em construção");
+                            default -> println("Opção inválida");
                         }
-                        else if(opcao == 1)
-                            println("Cadastre um novo filme - Em construção");
-                        else
-                            println("Opção inválida");
                     }
                 }
             }
