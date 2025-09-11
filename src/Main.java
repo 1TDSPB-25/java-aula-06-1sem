@@ -22,23 +22,24 @@ public class Main {
             println(MENU_PRINCIPAL);
             var conteudoOpcao = scan.nextInt();
             scan.nextLine();
-            if(conteudoOpcao == 0)
-                System.exit(0);
-            if (conteudoOpcao == 1) {
-                var voltar = false;
-                while (!voltar) {
-                    println("-----------------------------------");
-                    println(jogoService.MENU_JOGOS);
+            switch (conteudoOpcao) {
+                case 0 -> System.exit(0);
+                case 1 -> {
+                    var voltar = false;
+                    while (!voltar) {
+                        println("-----------------------------------");
+                        println(jogoService.MENU_JOGOS);
 
-                    var opcao = scan.nextInt();
-                    scan.nextLine();
+                        var opcao = scan.nextInt();
+                        scan.nextLine();
 
-                    switch (opcao) {
-                        case 1 -> jogoService.AdicionarJogo(scan, catalogo);
-                        case 2 -> jogoService.ListarJogos(catalogo);
-                        case 3 -> jogoService.RemoverJogo(scan, catalogo);
-                        case 4 -> voltar = true;
-                        default -> System.out.println("Opção inválida!");
+                        switch (opcao) {
+                            case 1 -> jogoService.AdicionarJogo(scan, catalogo);
+                            case 2 -> jogoService.ListarJogos(catalogo);
+                            case 3 -> jogoService.RemoverJogo(scan, catalogo);
+                            case 4 -> voltar = true;
+                            default -> System.out.println("Opção inválida!");
+                        }
                     }
                 }
             }
